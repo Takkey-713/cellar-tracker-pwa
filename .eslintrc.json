@@ -13,5 +13,13 @@
   },
   "plugins": ["@typescript-eslint"],
   "root": true,
-  "ignorePatterns": ["next.config.js", "prettierrc.js"]
+  "ignorePatterns": ["next.config.js", "prettierrc.js"],
+  "rules": {
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": false
+      }
+    ]
+  }
 }

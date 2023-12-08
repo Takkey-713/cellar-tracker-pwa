@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { Provider } from './_provider/provider'
-import Header from './_components/header/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,7 +18,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name='theme-color' content='#f69435' />
       </head>
       <body className={inter.className}>
-        <Header></Header>
         <Provider>{children}</Provider>
       </body>
     </html>

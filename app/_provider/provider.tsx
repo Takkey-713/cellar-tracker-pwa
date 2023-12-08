@@ -6,10 +6,10 @@ import theme from '../_styles/theme'
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
-    <CacheProvider>
-      <ChakraProvider theme={theme}>
-        <SessionProvider>{children}</SessionProvider>
-      </ChakraProvider>
-    </CacheProvider>
+    <SessionProvider>
+      <CacheProvider>
+        <ChakraProvider theme={theme}>{children}</ChakraProvider>
+      </CacheProvider>
+    </SessionProvider>
   )
 }

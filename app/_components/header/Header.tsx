@@ -1,18 +1,18 @@
 'use client'
-import { Box, Flex, Container, Heading } from '@chakra-ui/react'
 import { FC } from 'react'
-import AuthenticationButton from '@/_components/auth/AuthLink'
+import { Box, Container } from '@chakra-ui/react'
+import { Appbar } from '@/_components/header/uiparts/appbar/Appbar'
+import { Navigation } from '@/_components/header/uiparts/navigation/Navigation'
 
 const Header: FC = () => {
   return (
-    <Box px={4} as='header' bgColor='gray.100' width='100vw' position={'fixed'}>
-      <Container maxW='container.lg'>
-        <Flex py='4' justifyContent='space-between' alignItems='center'>
-          <Heading as='h1' fontSize='2xl' cursor='pointer'>
-            Cellar Tracker
-          </Heading>
-          <AuthenticationButton />
-        </Flex>
+    <Box as='header' width='100vw' position={'fixed'}>
+      <Container px={4} width='100%' bgColor='gray.100'>
+        <Appbar />
+      </Container>
+
+      <Container px={4}>
+        <Navigation />
       </Container>
     </Box>
   )

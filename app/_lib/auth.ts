@@ -16,10 +16,6 @@ export const authOptions: NextAuthOptions = {
     strategy: 'database',
   },
   callbacks: {
-    // eslint-disable-next-line @typescript-eslint/require-await
-    redirect: async ({ baseUrl }) => {
-      return `${baseUrl}/signup`
-    },
     session: async ({ session, user }) => {
       void prisma.$connect()
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access

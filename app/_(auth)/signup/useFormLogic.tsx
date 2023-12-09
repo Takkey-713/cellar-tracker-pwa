@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { signupSchema, SignupSchemaType } from '@/schemas/signupSchema'
+import { signupSchema, SignupSchemaType } from 'schemas/signupSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 export const useFormLogic = () => {

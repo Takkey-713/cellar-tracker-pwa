@@ -1,5 +1,5 @@
 'use client'
-
+//MEMO 以下のページは使用していませんが要望があればメールパスワード認証を実装します
 import {
   Button,
   Flex,
@@ -9,7 +9,7 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react'
-import { useFormLogic } from '@/(auth)/signup/useFormLogic'
+import { useFormLogic } from '@/_(auth)/signup/useFormLogic'
 
 export default function SignUp() {
   const { register, onSubmit, errors } = useFormLogic()

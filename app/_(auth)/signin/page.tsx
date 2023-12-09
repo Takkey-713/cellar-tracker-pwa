@@ -1,5 +1,5 @@
 'use client'
-
+//MEMO 以下のページは使用していませんが要望があればメールパスワード認証を実装します
 import {
   Button,
   Flex,
@@ -13,7 +13,7 @@ import {
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { FaGoogle } from 'react-icons/fa'
-import { useFormLogic } from '@/(auth)/signin/useFormLogic'
+import { useFormLogic } from '@/_(auth)/signin/useFormLogic'
 
 export default function SignIn() {
   const { register, onSubmit, errors } = useFormLogic()
@@ -40,6 +40,7 @@ export default function SignIn() {
               focusBorderColor={'transparent'}
               type='email'
               autoComplete='email'
+              value={'takiyu713@gmail.com'}
             />
             <FormErrorMessage fontSize={{ base: '12px', md: '14px' }}>
               {errors.email && errors.email.message}
@@ -57,6 +58,7 @@ export default function SignIn() {
               focusBorderColor={'transparent'}
               type='password'
               autoComplete='password'
+              value={'Takiyu713'}
             />
             <FormErrorMessage fontSize={{ base: '12px', md: '14px' }}>
               {errors.password && errors.password.message}

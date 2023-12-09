@@ -1,0 +1,18 @@
+'use client'
+
+import React from 'react'
+import { Flex, Heading } from '@chakra-ui/react'
+import { UserInfo } from '@/_components/header/uiparts/userInfo/UserInfo'
+
+export const Appbar = () => {
+  return (
+    <Flex py='4' justifyContent='space-between' alignItems='center'>
+      <Heading as='h1' fontSize='2xl' cursor='pointer'>
+        Cellar Tracker
+      </Heading>
+
+      <UserInfo />
+      {/* 任意のコンポーネントを追加していく */}
+    </Flex>
+  )
+}

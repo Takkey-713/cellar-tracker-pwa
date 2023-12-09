@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react'
 import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { FaGoogle } from 'react-icons/fa'
 import { useFormLogic } from '@/_(auth)/signin/useFormLogic'
 
 export default function SignIn() {
@@ -78,7 +77,6 @@ export default function SignIn() {
           alignItems={'center'}
           color='teal'
         >
-          <FaGoogle />
           <Box as={'span'} ml={3}>
             Login With Google
           </Box>

@@ -14,5 +14,13 @@ const theme = extendTheme({
     useSystemColorMode: false,
   },
   breakpoints,
+  colors: {
+    transparent: 'transparent',
+    black: '#000',
+    white: '#fff',
+    gray3: '#333333',
+    gray7: '#717171',
+    grayE: '#EAEAEA',
+  },
 })
 export default theme

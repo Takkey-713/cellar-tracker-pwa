@@ -18,7 +18,6 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session: async ({ session, user }) => {
       void prisma.$connect()
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       const userAccount = await prisma.account.findFirst({
         where: {
           userId: user.id,
@@ -33,7 +32,7 @@ export const authOptions: NextAuthOptions = {
         ...session,
         user: {
           ...session.user,
-          userId: userAccount.id,
+          id: user.id,
           accessToken: userAccount.access_token,
         },
       }

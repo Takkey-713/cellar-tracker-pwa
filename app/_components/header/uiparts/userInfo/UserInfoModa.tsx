@@ -16,13 +16,12 @@ import { signOut } from 'next-auth/react'
 type Props = {
   isOpen: boolean
   onClose: () => void
-  user:
-    | {
-        name?: string | null | undefined
-        email?: string | null | undefined
-        image?: string | null | undefined
-      }
-    | undefined
+  user: {
+    id: string
+    name: string
+    email: string
+    image: string
+  }
 }
 
 export const UserInfoModal: React.FC<Props> = ({ isOpen, onClose, user }) => {
@@ -31,28 +30,25 @@ export const UserInfoModal: React.FC<Props> = ({ isOpen, onClose, user }) => {
     <>
       <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent width={'85%'}>
           <ModalHeader>
-            {user && (
-              <Box as={'span'} fontSize='16px'>
-                {user.name}
-              </Box>
-            )}
+            <Box as={'span'} fontSize='16px'>
+              {user.name}
+            </Box>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {user && (
-              <Flex>
-                <Box as={'span'} fontSize='16px'>
-                  {user.email}
-                </Box>
-              </Flex>
-            )}
+            <Flex>
+              <Box as={'span'} fontSize='16px'>
+                {user.email}
+              </Box>
+            </Flex>
+
             {/* ここに編集画面への導線とか作る感じで */}
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme='red' mr={3} onClick={() => signOut()}>
+            <Button colorScheme='red' mr={3} onClick={() => signOut({ callbackUrl: '/' })}>
               <Box as={'span'}>Sign out</Box>
             </Button>
           </ModalFooter>

@@ -1,15 +1,10 @@
-import type { Metadata } from 'next'
-import Header from '@/_components/header/Header'
-export const metadata: Metadata = {
-  title: 'Cellar Tracker Toppage',
-  description: 'Cellar Tracker',
-}
+import PublicHeader from '@/_components/header/PublicHeader'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Header />
-      <section>{children}</section>
+      <PublicHeader />
+      <main>{children}</main>
     </>
   )
 }

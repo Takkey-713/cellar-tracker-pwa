@@ -18,16 +18,20 @@ export const zWine = z.object({
   updatedAt: z.string().datetime(),
 })
 
-export const zWines = z.array(zWine)
-
-export type Wine = z.infer<typeof zWine>
-export type Wines = z.infer<typeof zWines>
-
-export const ApiResultSchema = z.object({
-  list: zWines,
+const PaginationSchema = z.object({
   page: z.number(),
   perPage: z.number(),
   total: z.number(),
 })
 
+export const zWines = z.array(zWine)
+
+export const ApiResultSchema = z.object({
+  list: zWines,
+  pagination: PaginationSchema,
+})
+
+export type Wine = z.infer<typeof zWine>
+export type Wines = z.infer<typeof zWines>
 export type ApiResult = z.infer<typeof ApiResultSchema>
+export type PaginationType = z.infer<typeof PaginationSchema>

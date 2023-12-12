@@ -1,7 +1,7 @@
 import { authOptions } from '@/_lib/auth'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
-import { ApiResultSchema } from './type'
+import { ApiResultSchema } from './types'
 import { ListContent } from '@/(private)/list/_components/ListContent'
 
 interface Params {

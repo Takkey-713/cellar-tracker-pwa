@@ -6,12 +6,12 @@ import { Navigation } from '@/_components/header/uiparts/navigation/Navigation'
 
 const Header: FC = () => {
   return (
-    <Box as='header' width='100vw' position={'sticky'} top={'0'}>
+    <Box as='header' width='100vw' position={'sticky'} top={'0'} zIndex={100}>
       <Box px={4} bgColor='gray.100'>
         <Appbar />
       </Box>
 
-      <Box px={4}>
+      <Box px={4} bgColor='gray.100'>
         <Navigation />
       </Box>
     </Box>

@@ -46,6 +46,7 @@ model User {
   updatedAt DateTime @updatedAt @map("updated_at")
   accounts      Account[]
   sessions      Session[]
+  wines         Wine[]
 }
 
 model VerificationToken {
@@ -85,9 +86,11 @@ model Wine {
   category        Category @relation(fields: [categoryId], references: [id])
   categoryId      Int
   userId       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   description     String?
   quantityInStock Int     
   unitPrice       Float
+  sellingPrice    Float
   supplier        String
   image           String?
   qrcode          String  @unique

@@ -6,7 +6,7 @@ import { UserInfo } from '@/_components/header/uiparts/userInfo/UserInfo'
 
 export const Appbar = () => {
   return (
-    <Flex py='4' justifyContent='space-between' alignItems='center'>
+    <Flex py='4' height={'70px'} justifyContent='space-between' alignItems='center'>
       <Heading as='h1' fontSize='2xl' cursor='pointer'>
         Cellar Tracker
       </Heading>

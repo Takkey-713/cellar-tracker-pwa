@@ -1,9 +1,9 @@
-import PublicHeader from '@/_components/header/PublicHeader'
+import Header from '@/_components/header/Header'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <PublicHeader />
+      <Header />
       <main>{children}</main>
     </>
   )

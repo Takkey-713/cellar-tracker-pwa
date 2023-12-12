@@ -20,7 +20,12 @@ export const UserInfo: React.FC = () => {
       <>
         <Box cursor={'pointer'} onClick={handleAvatarClick}>
           {/* TODO デフォの画像用意する */}
-          <Avatar name='Logined User' src={session.user.image || ''} />
+          <Avatar
+            name='Logined User'
+            height={'32px'}
+            width={'32px'}
+            src={session.user.image || ''}
+          />
         </Box>
 
         <UserInfoModal

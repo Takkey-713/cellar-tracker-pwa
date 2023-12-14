@@ -19,7 +19,7 @@ export const Navigation = () => {
           在庫一覧
         </Box>
       </Link>
-      <Link href='/' style={linkStyle}>
+      <Link href='/new' style={linkStyle}>
         <Box as={'span'} fontSize={{ base: '12px', md: '14px' }}>
           在庫登録
         </Box>

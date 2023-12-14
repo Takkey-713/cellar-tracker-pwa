@@ -12,8 +12,8 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react'
-import { useFormLogic } from '@/(private)/new/_components/useFormLogic'
-import { ApiResult } from '@/(private)/new/types'
+import { useFormLogic } from '@/(private)/wines/new/_components/useFormLogic'
+import { ApiResult } from '@/(private)/wines/new/types'
 
 interface Props {
   userId: string

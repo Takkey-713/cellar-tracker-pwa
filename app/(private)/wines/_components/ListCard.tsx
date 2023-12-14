@@ -21,10 +21,9 @@ interface Props {
 
 export const ListCard: React.FC<Props> = ({ data }) => {
   const stackWidth = useBreakpointValue({ base: '100%', sm: 'calc(100% - 150px)' })
-  // TODO 編集ページ作ったらそのリンクを作る
   return (
     <ListItem>
-      <Link href={`/wines/${data.id}`}>
+      <Link href={`/wines/${data.id}/edit`}>
         <Card direction={{ base: 'column', sm: 'row' }} mt={4} overflow='hidden' cursor={'pointer'}>
           {/* 仮の画像 */}
           <Image

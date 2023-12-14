@@ -14,7 +14,7 @@ export const Navigation = () => {
   }
   return (
     <Flex py='4' alignItems='center'>
-      <Link href='/list' style={linkStyle}>
+      <Link href='/wines' style={linkStyle}>
         <Box as={'span'} fontSize={{ base: '12px', md: '14px' }}>
           在庫一覧
         </Box>

@@ -2,7 +2,7 @@ import { authOptions } from '@/_lib/auth'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { ApiResultSchema } from './types'
-import { ListContent } from '@/(private)/list/_components/ListContent'
+import { ListContent } from '@/(private)/wines/_components/ListContent'
 
 interface Params {
   searchParams: {

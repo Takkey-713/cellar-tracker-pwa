@@ -26,13 +26,13 @@ export const Pager: React.FC<Props> = (props) => {
           background={page === pagerValue ? '#23729e' : 'white'}
           color={page === pagerValue ? 'white' : '#23729e'}
         >
-          <Link href={`/list?page=${pagerValue}&perPage=${perPage}`}>
+          <Link href={`/wines?page=${pagerValue}&perPage=${perPage}`}>
             <Box as={'span'}>{pagerValue}</Box>
           </Link>
         </Box>
       ) : (
         <Box>
-          <Link href={`/list?page=${pagerValue}&perPage=${perPage}`}>
+          <Link href={`/wines?page=${pagerValue}&perPage=${perPage}`}>
             <Box as={'span'}>...</Box>
           </Link>
         </Box>

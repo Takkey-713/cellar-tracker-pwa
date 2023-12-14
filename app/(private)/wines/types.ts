@@ -31,6 +31,10 @@ export const ApiResultSchema = z.object({
   pagination: PaginationSchema,
 })
 
+export const WineShema = z.object({
+  wine: zWine,
+})
+
 export type Wine = z.infer<typeof zWine>
 export type Wines = z.infer<typeof zWines>
 export type ApiResult = z.infer<typeof ApiResultSchema>

@@ -1,14 +1,10 @@
 import { z } from 'zod'
 
-export const createWineSchema = z.object({
+export const formWineSchema = z.object({
   name: z.string().min(1, { message: '入力必須です' }),
   district: z.string().min(1, { message: '入力必須です' }),
-  varietyId: z
-    .number({ invalid_type_error: '選択してください' })
-    .min(1, { message: '選択してください' }),
-  categoryId: z
-    .number({ invalid_type_error: '選択してください' })
-    .min(1, { message: '選択してください' }),
+  variety: z.string().min(1, { message: '選択してください' }),
+  category: z.string().min(1, { message: '選択してください' }),
   description: z.string(),
   quantityInStock: z
     .number({ invalid_type_error: '数値を入力してください' })
@@ -23,4 +19,4 @@ export const createWineSchema = z.object({
   image: z.string(),
 })
 
-export type CreateWineSchema = z.infer<typeof createWineSchema>
+export type FormWineSchema = z.infer<typeof formWineSchema>

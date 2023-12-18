@@ -2,8 +2,8 @@
 import React from 'react'
 import { ApiResult } from '../types'
 import { Box, List } from '@chakra-ui/react'
-import { ListCard } from '@/(private)/list/_components/ListCard'
-import { Pagination } from '@/(private)/list/_components/Pagination'
+import { ListCard } from '@/(private)/wines/_components/ListCard'
+import { Pagination } from '@/(private)/wines/_components/Pagination'
 
 interface Props {
   data: ApiResult

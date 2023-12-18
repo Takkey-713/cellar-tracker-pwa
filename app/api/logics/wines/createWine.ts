@@ -8,8 +8,8 @@ export const createWine = async (data: WineData) => {
     data: {
       name: data.name,
       district: data.district,
-      varietyId: data.varietyId,
-      categoryId: data.categoryId,
+      variety: data.variety,
+      category: data.category,
       userId: data.userId,
       description: data.description,
       quantityInStock: data.quantityInStock,

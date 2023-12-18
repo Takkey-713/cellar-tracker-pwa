@@ -2,8 +2,8 @@
 import React from 'react'
 import { PaginationType } from '../types'
 import { List } from '@chakra-ui/react'
-import { Pager } from '@/(private)/list/_components/Pager'
-import { createPagination } from '@/(private)/list/_components/utils/pagination'
+import { Pager } from '@/(private)/wines/_components/Pager'
+import { createPagination } from '@/(private)/wines/_components/utils/pagination'
 
 interface Props {
   data: PaginationType

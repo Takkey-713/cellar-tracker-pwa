@@ -1,26 +1,26 @@
 import { useForm } from 'react-hook-form'
-import { createWineSchema, CreateWineSchema } from 'schemas/wine/createWineSchema'
+import { formWineSchema, FormWineSchema } from 'schemas/wine/formWineSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { useRouter } from 'next/navigation'
 
-export const useFormLogic = (userId: string) => {
+export const useFormLogic = (wineId: number, userId: string) => {
   const router = useRouter()
   const {
     register,
     setValue,
     handleSubmit,
     formState: { errors },
-  } = useForm<CreateWineSchema>({
-    resolver: zodResolver(createWineSchema),
+  } = useForm<FormWineSchema>({
+    resolver: zodResolver(formWineSchema),
   })
 
-  const onSubmit = async (data: CreateWineSchema) => {
+  const onSubmit = async (data: FormWineSchema) => {
     const baseUrl = process.env.BASE_URL || ''
     const requestData = { ...data, userId }
     try {
-      const response = await fetch(`${baseUrl}/api/wines`, {
-        method: 'POST',
+      const response = await fetch(`${baseUrl}/api/wines/${wineId}`, {
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -33,7 +33,7 @@ export const useFormLogic = (userId: string) => {
         console.error('HTTP Error:', response.status, errorData)
         return
       } else {
-        router.replace('/list')
+        router.replace(`/wines/${wineId}/edit`)
       }
     } catch (error: unknown) {
       if (error instanceof Error) {

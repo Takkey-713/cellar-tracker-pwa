@@ -12,17 +12,20 @@ import {
   FormLabel,
   FormErrorMessage,
 } from '@chakra-ui/react'
-import { useFormLogic } from '@/(private)/new/_components/useFormLogic'
-import { ApiResult } from '@/(private)/new/types'
+import { useFormLogic } from '@/(private)/wines/[id]/edit/_components/useFormogic'
+import { WineSchema } from '@/(private)/wines/types/wine'
+import { varieties } from 'const/varieties'
+import { categories } from 'const/categories'
 
 interface Props {
+  data: WineSchema
   userId: string
-  data: ApiResult
 }
 
-export const FormContent: React.FC<Props> = ({ userId, data }) => {
-  const { categories, varieties } = data
-  const { register, onSubmit, errors } = useFormLogic(userId)
+export const EditForm: React.FC<Props> = ({ data, userId }) => {
+  const { wine } = data
+
+  const { register, onSubmit, errors } = useFormLogic(wine.id, userId)
   return (
     <Flex as={'section'} alignItems='center' py={8} px={4} justifyContent='center'>
       <Flex
@@ -45,6 +48,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
               type='text'
+              defaultValue={wine.name}
               autoComplete='name'
             />
             <FormErrorMessage fontSize={{ base: '12px', md: '14px' }}>
@@ -61,6 +65,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
               type='district'
+              defaultValue={wine.district}
               autoComplete='district'
             />
             <FormErrorMessage fontSize={{ base: '12px', md: '14px' }}>
@@ -76,6 +81,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               variant='filled'
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
+              defaultValue={wine.quantityInStock}
               type='number'
             />
             <FormErrorMessage fontSize={{ base: '12px', md: '14px' }}>
@@ -91,6 +97,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               variant='filled'
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
+              defaultValue={wine.unitPrice}
               type='number'
               autoComplete='unitPrice'
             />
@@ -107,6 +114,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               variant='filled'
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
+              defaultValue={wine.sellingPrice}
               type='number'
               autoComplete='sellingPrice'
             />
@@ -115,38 +123,35 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
             </FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={!!errors.categoryId} mb={3}>
-            <FormLabel htmlFor='categoryId'>カテゴリ</FormLabel>
-            <Select
-              id='categoryId'
-              {...register('categoryId', { valueAsNumber: true })}
-              fontSize={{ base: '12px', md: '14px' }}
-            >
-              <option value={0}>カテゴリを選択</option>
+          <FormControl isInvalid={!!errors.category} mb={3}>
+            <FormLabel htmlFor='category'>カテゴリ</FormLabel>
+            <Select id='category' {...register('category')} fontSize={{ base: '12px', md: '14px' }}>
               {categories.map((category) => (
-                <option key={category.id} value={category.id}>
+                <option
+                  key={category.id}
+                  defaultValue={category.name === wine.category ? wine.category : ''}
+                >
                   {category.name}
                 </option>
               ))}
             </Select>
-            <FormErrorMessage>{errors.categoryId && errors.categoryId.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.category && errors.category.message}</FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={!!errors.varietyId} mb={3}>
-            <FormLabel htmlFor='varietyId'>品種</FormLabel>
-            <Select
-              id='varietyId'
-              {...register('varietyId', { valueAsNumber: true })}
-              fontSize={{ base: '12px', md: '14px' }}
-            >
-              <option value={0}>品種を選択</option>
+          <FormControl isInvalid={!!errors.variety} mb={3}>
+            <FormLabel htmlFor='variety'>品種</FormLabel>
+            <Select id='variety' {...register('variety')} fontSize={{ base: '12px', md: '14px' }}>
+              <option value={wine.variety}>{wine.variety}</option>
               {varieties.map((variety) => (
-                <option key={variety.id} value={variety.id}>
+                <option
+                  key={variety.id}
+                  defaultValue={variety.name === wine.variety ? wine.variety : ''}
+                >
                   {variety.name}
                 </option>
               ))}
             </Select>
-            <FormErrorMessage>{errors.varietyId && errors.varietyId.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.variety && errors.variety.message}</FormErrorMessage>
           </FormControl>
 
           <FormControl isInvalid={!!errors.supplier} mb={6}>
@@ -157,6 +162,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               variant='filled'
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
+              defaultValue={wine.supplier}
               type='text'
               autoComplete='supplier'
             />
@@ -168,14 +174,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
           {/* TODO Google Cloud StorageにFileを保存して画像URLをvalueにすること */}
           <FormControl isInvalid={!!errors.image} mb={6}>
             <FormLabel htmlFor='image'>画像</FormLabel>
-            <Input
-              id='image'
-              {...register('image')}
-              type='hidden'
-              value={
-                'https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60'
-              }
-            />
+            <Input id='image' {...register('image')} type='hidden' defaultValue={wine.image} />
             {/* <Input id='image' type='file' accept='image/*' display='none' /> */}
             <Button mt={4}>アップロード</Button>
 
@@ -193,6 +192,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
               fontSize={{ base: '12px', md: '14px' }}
               focusBorderColor={'transparent'}
               autoComplete='description'
+              defaultValue={wine.description}
             />
             <FormErrorMessage fontSize={{ base: '12px', md: '14px' }}>
               {errors.description && errors.description.message}
@@ -200,7 +200,7 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
           </FormControl>
 
           <Button type={'submit'} colorScheme='teal' width={'100%'}>
-            登録
+            更新
           </Button>
         </form>
       </Flex>

@@ -4,8 +4,8 @@ export const zWine = z.object({
   id: z.number().int(),
   name: z.string(),
   district: z.string(),
-  varietyId: z.number().int(),
-  categoryId: z.number().int(),
+  variety: z.string(),
+  category: z.string(),
   userId: z.string(),
   description: z.string(),
   quantityInStock: z.number().int(),
@@ -29,6 +29,10 @@ export const zWines = z.array(zWine)
 export const ApiResultSchema = z.object({
   list: zWines,
   pagination: PaginationSchema,
+})
+
+export const WineShema = z.object({
+  wine: zWine,
 })
 
 export type Wine = z.infer<typeof zWine>

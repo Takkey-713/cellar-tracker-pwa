@@ -56,35 +56,12 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
-
-model Variety {
-  id   Int    @id @default(autoincrement())
-  name String
-  wines Wine[]
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("varieties")
-}
-
-model Category {
-  id   Int    @id @default(autoincrement())
-  name String
-  wines Wine[] 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@map("categories")
-}
-
 model Wine {
   id              Int      @id @default(autoincrement())
   name            String
   district        String
-  variety         Variety  @relation(fields: [varietyId], references: [id])
-  varietyId       Int
-  category        Category @relation(fields: [categoryId], references: [id])
-  categoryId      Int
+  variety       String
+  category      String
   userId       String
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   description     String?

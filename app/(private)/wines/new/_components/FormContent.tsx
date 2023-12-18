@@ -13,15 +13,14 @@ import {
   FormErrorMessage,
 } from '@chakra-ui/react'
 import { useFormLogic } from '@/(private)/wines/new/_components/useFormLogic'
-import { ApiResult } from '@/(private)/wines/new/types'
+import { categories } from 'const/categories'
+import { varieties } from 'const/varieties'
 
 interface Props {
   userId: string
-  data: ApiResult
 }
 
-export const FormContent: React.FC<Props> = ({ userId, data }) => {
-  const { categories, varieties } = data
+export const FormContent: React.FC<Props> = ({ userId }) => {
   const { register, onSubmit, errors } = useFormLogic(userId)
   return (
     <Flex as={'section'} alignItems='center' py={8} px={4} justifyContent='center'>
@@ -115,38 +114,30 @@ export const FormContent: React.FC<Props> = ({ userId, data }) => {
             </FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={!!errors.categoryId} mb={3}>
-            <FormLabel htmlFor='categoryId'>カテゴリ</FormLabel>
-            <Select
-              id='categoryId'
-              {...register('categoryId', { valueAsNumber: true })}
-              fontSize={{ base: '12px', md: '14px' }}
-            >
-              <option value={0}>カテゴリを選択</option>
+          <FormControl isInvalid={!!errors.category} mb={3}>
+            <FormLabel htmlFor='category'>カテゴリ</FormLabel>
+            <Select id='category' {...register('category')} fontSize={{ base: '12px', md: '14px' }}>
+              <option value=''>カテゴリを選択</option>
               {categories.map((category) => (
-                <option key={category.id} value={category.id}>
+                <option key={category.id} value={category.name}>
                   {category.name}
                 </option>
               ))}
             </Select>
-            <FormErrorMessage>{errors.categoryId && errors.categoryId.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.category && errors.category.message}</FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={!!errors.varietyId} mb={3}>
-            <FormLabel htmlFor='varietyId'>品種</FormLabel>
-            <Select
-              id='varietyId'
-              {...register('varietyId', { valueAsNumber: true })}
-              fontSize={{ base: '12px', md: '14px' }}
-            >
-              <option value={0}>品種を選択</option>
+          <FormControl isInvalid={!!errors.variety} mb={3}>
+            <FormLabel htmlFor='variety'>品種</FormLabel>
+            <Select id='variety' {...register('variety')} fontSize={{ base: '12px', md: '14px' }}>
+              <option value=''>品種を選択</option>
               {varieties.map((variety) => (
-                <option key={variety.id} value={variety.id}>
+                <option key={variety.id} value={variety.name}>
                   {variety.name}
                 </option>
               ))}
             </Select>
-            <FormErrorMessage>{errors.varietyId && errors.varietyId.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.variety && errors.variety.message}</FormErrorMessage>
           </FormControl>
 
           <FormControl isInvalid={!!errors.supplier} mb={6}>

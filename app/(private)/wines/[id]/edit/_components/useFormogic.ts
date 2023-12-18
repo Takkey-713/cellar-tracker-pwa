@@ -4,7 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { useRouter } from 'next/navigation'
 
-export const useFormLogic = (userId: string) => {
+export const useFormLogic = (wineId: number) => {
   const router = useRouter()
   const {
     register,
@@ -17,14 +17,13 @@ export const useFormLogic = (userId: string) => {
 
   const onSubmit = async (data: FormWineSchema) => {
     const baseUrl = process.env.BASE_URL || ''
-    const requestData = { ...data, userId }
     try {
-      const response = await fetch(`${baseUrl}/api/wines`, {
-        method: 'POST',
+      const response = await fetch(`${baseUrl}/api/wines/${wineId}`, {
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify(data),
       })
 
       if (!response.ok) {
@@ -33,7 +32,7 @@ export const useFormLogic = (userId: string) => {
         console.error('HTTP Error:', response.status, errorData)
         return
       } else {
-        router.replace('/wines')
+        router.replace(`/wines/${wineId}/edit`)
       }
     } catch (error: unknown) {
       if (error instanceof Error) {

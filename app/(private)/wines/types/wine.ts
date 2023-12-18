@@ -24,7 +24,7 @@ const PaginationSchema = z.object({
   total: z.number(),
 })
 
-export const zWines = z.array(zWine)
+const zWines = z.array(zWine)
 
 export const ApiResultSchema = z.object({
   list: zWines,
@@ -37,5 +37,6 @@ export const WineShema = z.object({
 
 export type Wine = z.infer<typeof zWine>
 export type Wines = z.infer<typeof zWines>
+export type WineSchema = z.infer<typeof WineShema>
 export type ApiResult = z.infer<typeof ApiResultSchema>
 export type PaginationType = z.infer<typeof PaginationSchema>

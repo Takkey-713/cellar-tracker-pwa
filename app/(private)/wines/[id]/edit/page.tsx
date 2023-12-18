@@ -8,7 +8,7 @@ export default async function List({ params: { id } }: { params: { id: string } 
   const session = await getServerSession(authOptions)
   if (session && session.user && id) {
     const result = await getWine(id)
-    return <EditForm data={result} />
+    return <EditForm data={result} userId={session.user.id} />
   } else {
     redirect('/unauthorized')
   }

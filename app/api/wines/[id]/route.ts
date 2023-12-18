@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getWine } from '@/api/_logics/wines/getWine'
+import { getWine } from '@/api/logics/wines/getWine'
 
 export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
   const wineId = Number(params.id)

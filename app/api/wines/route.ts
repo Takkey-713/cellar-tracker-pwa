@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { listCount } from '@/api/_logics/wines/listCount'
-import { getList } from '@/api/_logics/wines/getList'
+import { listCount } from '@/api/logics/wines/listCount'
+import { getList } from '@/api/logics/wines/getList'
 
-import { createWine } from '@/api/_logics/wines/createWine'
+import { createWine } from '@/api/logics/wines/createWine'
 import { wineSchema } from '@/api/wines/types'
 import { ZodError } from 'zod'
 

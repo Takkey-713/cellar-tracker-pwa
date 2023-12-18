@@ -4,8 +4,8 @@ import { z } from 'zod'
 export const wineSchema = z.object({
   name: z.string(),
   district: z.string(),
-  varietyId: z.number(),
-  categoryId: z.number(),
+  variety: z.string(),
+  category: z.string(),
   userId: z.string(),
   description: z.string(),
   quantityInStock: z.number(),
